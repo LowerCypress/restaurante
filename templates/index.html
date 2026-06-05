@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}Inicio{% endblock %}
+{% block content %}
+<h3 class="mb-3 text-center">📋 Lista de Personas</h3>
+
+<table class="table table-bordered table-striped shadow-sm">
+  <thead class="table-primary">
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Edad</th>
+      {% if rol == 'admin' %}
+      <th>Acciones</th>
+      {% endif %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for p in personas %}
+    <tr>
+      <td>{{ p[0] }}</td>
+      <td>{{ p[1] }}</td>
+      <td>{{ p[2] }}</td>
+      {% if rol == 'admin' %}
+      <td>
+        <a href="{{ url_for('edit', id=p[0]) }}" class="btn btn-warning btn-sm">Editar</a>
+        <a href="{{ url_for('delete', id=p[0]) }}" class="btn btn-danger btn-sm">Eliminar</a>
+      </td>
+      {% endif %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% if rol == 'admin' %}
+<div class="card mt-4 shadow">
+  <div class="card-body">
+    <h5>➕ Agregar nueva persona</h5>
+    <form method="POST" action="{{ url_for('add') }}">
+      <div class="row">
+        <div class="col">
+          <input type="text" name="nombre" placeholder="Nombre" class="form-control" required>
+        </div>
+        <div class="col">
+          <input type="number" name="edad" placeholder="Edad" class="form-control" required>
+        </div>
+        <div class="col-auto">
+          <button class="btn btn-primary">Agregar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

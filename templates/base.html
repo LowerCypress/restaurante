@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Restaurante{% endblock %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        header {
+            background-color: #9D9D93;
+            color: white;
+            padding: 7px 13px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            background-color: #7f7f6f;
+            padding: 8px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 7px 13px;
+            border-radius: 8px;
+            background-color: #8f8f85;
+            transition: background-color 0.2s ease;
+        }
+
+        nav a:hover,
+        nav a.active {
+            background-color: #5c5c52;
+        }
+
+        main {
+
+            padding: 20px;
+        }
+        div.full-width {
+            font-style: Arial, sans-serif;
+            width: 100%;
+                background-color: #e0e0d1;
+                padding: 20px;
+                border-radius: 8px;
+
+        }
+        img {
+            background: #ffffff;
+            padding: 20px;
+        }
+
+        div.card-body {
+            background-color: #e0e0d1;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .footer {
+            background-color: #9D9D93;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header" style="display: flex; align-items: center; justify-content: center; gap: 20px; padding: 15px;">
+        <img src="{{ url_for('static', filename='images/Logo.png') }}" 
+             alt="Logo del restaurante" 
+             width="100" 
+             height="100" 
+             style="border-radius: 50%; object-fit: cover;">
+        <h1 style="margin: 0; font-size: 2.5rem;">Restaurante Díaz</h1>
+    </header>
+
+    <nav class="nav">
+        <a href="/" class="active">Inicio</a>
+        
+        {% if session.get('rol') in ['admin', 'chef','user'] %}
+            <a href="/pedidos">Hacer Pedidos</a>
+        {% endif %}
+        
+        {% if session.get('rol') in ['admin', 'user'] %}
+            <a href="{{ url_for('entidades.listar_proveedores') }}">Proveedores</a>
+        {% endif %}
+        
+        <a href="/contacto">Contacto</a>
+        
+        {% if session.get('username') %}
+            <span style="color: white; margin-left: 20px;">Bienvenido, {{ session.get('username') }}!</span>
+            <a href="{{ url_for('logout') }}" style="
+                margin-left: 10px;
+                color: #8f8f85;
+                background-color: #5c5c52;
+                padding: 6px 15px;
+                border-radius: 8px;
+                text-decoration: none;
+                font-size: 0.9rem;
+                 ">Cerrar sesión</a>
+        {% endif %}
+    </nav>
+    <main class="container">
+
+        {% block content %}
+        <div class="full-width">
+            <h1><center><strong>Bienvenido a mi restaurante</strong></center></h1>
+            <h2><center>Explora nuestros platos y contáctanos para más información.</center></h2>
+            <p><center>Mira Nuestro catalogo de platos</center></p>
+            <img src="{{ url_for('static', filename='images/234.png') }}" 
+             alt="Imagen de un restaurante" 
+             width="800" 
+             height="300" 
+             style="display: block; margin: 0 auto; border-radius: 30px; object-fit: cover;">
+            <img src="{{ url_for('static', filename='images/235.png') }}" 
+             alt="Imagen de un restaurante" 
+             width="800" 
+             height="300" 
+             style="display: block; margin: 0 auto; border-radius: 30px; object-fit: cover;">
+            
+
+        </div>
+        {% endblock %}
+    </main>
+    <footer class="footer">
+        <p>© 2026 - Sitio de práctica académica</p>
+    </footer>
+</body>
+
+</html>
+
+
+</html>

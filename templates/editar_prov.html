@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar Proveedor{% endblock %}
+
+{% block content %}
+<div class="full-width">
+    <div class="pedido-container">
+        <h2>Editar Datos del Proveedor</h2>
+        <form action="{{ url_for('editar_proveedor', id=proveedor.id) }}" method="POST" class="pedido-form">
+            <label for="numero">numero</label>
+            <input type="text" id="numero" name="numero" value="{{ proveedor.numero }}" required>
+
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" value="{{ proveedor.nombre }}" required>
+
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" value="{{ proveedor.email }}" required>
+
+            <label for="opciones">Que producto provee:</label>
+            <select id="opciones" name="opciones">
+                <option value="Comida" {% if proveedor.opcion == 'Comida' %}selected{% endif %}>Comida</option>
+                <option value="Platos" {% if proveedor.opcion == 'Platos' %}selected{% endif %}>Platos</option>
+                <option value="Vasos" {% if proveedor.opcion == 'Vasos' %}selected{% endif %}>Vasos</option>
+                <option value="Muebles" {% if proveedor.opcion == 'Muebles' %}selected{% endif %}>Muebles</option>
+            </select>
+            
+            <button type="submit" style="background: #4a90e2;">Guardar Cambios</button>
+            <a href="{{ url_for('index') }}" style="margin-left: 10px; color: #555; text-decoration: none;">Cancelar</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
