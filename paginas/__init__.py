@@ -11,7 +11,8 @@ import os
 def create_app():
     #'..'
     template_dir = os.path.abspath(os.path.join(os.path.dirname(__file__),'..', 'templates'))
-    app = Flask(__name__, template_folder=template_dir)
+    static_dir = os.path.abspath(os.path.join(os.path.dirname(__file__),'..', 'static'))
+    app = Flask(__name__, template_folder=template_dir, static_folder=static_dir)
     app.register_blueprint(inicio_bp)
     app.register_blueprint(contact_bp)
     app.register_blueprint(shop_bp)
