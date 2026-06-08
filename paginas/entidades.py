@@ -23,6 +23,6 @@ def agregar_proveedores():
 @entidades_bp.route('/proveedores')
 def listar_proveedores():
     conn = get_connection()
-    proveedores = conn.execute('SELECT * FROM proveedores').fetchall()
+    proveedores = conn.execute('SELECT id,numero,nombre,email,producto FROM proveedores').fetchall()
     conn.close()
     return render_template('Proovedores.html', proveedores=proveedores)

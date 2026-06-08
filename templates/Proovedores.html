@@ -149,7 +149,8 @@
 
 <div class="proveedor-container">
     <h2>Ingresar los datos del proveedor</h2>
-    <form action="/guardar_proveedor" method="POST" class="proveedor-form">
+    
+    <form action="{{ url_for('entidades.agregar_proveedores') }}" method="POST" class="proveedor-form">
         <label for="numero">Número de Proveedor</label>
         <input type="text" id="numero" name="numero" placeholder="Número de Proveedor" required>
 
@@ -161,14 +162,14 @@
 
         <label for="opciones">Que producto provee</label>
         <select id="opciones" name="opciones">
-            <option value="Espagueti">Comida</option>
-            <option value="Pollo al ajillo">Platos</option>
-            <option value="Salmon a la parilla">Vasos</option>
-            <option value="Pescado del dia">Muebles</option>
+            <option value="Comida">Comida</option>
+            <option value="Platos">Platos</option>
+            <option value="Vasos">Vasos</option>
+            <option value="Muebles">Muebles</option>
         </select>
         
         <div>
-            <button type="submit">Realizar Pedido</button>
+            <button type="submit">Registrar Proveedor</button>
         </div>
     </form>
     
@@ -179,12 +180,12 @@
     {% for u in proveedores %}
         <li class="proveedor-item">
             <span class="proveedor-texto">
-                {{ u.numero }} {{ u.nombre }} --- E-mail: {{ u.email }} ---- <strong>Producto Proveído:</strong> {{ u.producto }}
+                {{ u[1] }} - {{ u[2] }} --- E-mail: {{ u[3] }} ---- <strong>Producto Proveído:</strong> {{ u[4] }}
             </span>
             <div class="acciones-container">
-                <a href="/editar_proveedor/{{ u.id }}" class="btn-action btn-editar">Editar</a>
+                <a href="{{ url_for('entidades.listar_proveedores') }}" class="btn-action btn-editar">Editar</a>
                 
-                <form action="/eliminar_proveedor/{{ u.id }}" method="POST" style="margin: 0;" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este proveedor?');">
+                <form action="#" method="POST" style="margin: 0;">
                     <button type="submit" class="btn-action btn-eliminar">Eliminar</button>
                 </form>
             </div>
@@ -194,4 +195,6 @@
     {% endfor %}
     </ul>
 </div>
+
+  </div>
 {% endblock %}
