@@ -130,12 +130,12 @@
         {% for u in usuarios %}
             <li class="pedido-item">
                 <span class="pedido-texto">
-                    {{ u.nombre }} {{ u.apellido }} --- E-mail: {{ u.email }} ---- <strong>Plato Elegido:</strong> {{ u.opcion }}
+                    {{ u[1] }} {{ u[2] }} --- E-mail: {{ u[3] }} ---- <strong>Plato Elegido:</strong> {{ u[4] }}
                 </span>
                 <div class="acciones-container">
-                    <a href="{{ url_for('edicion1.editar_pedido', id=u.id) }}" class="btn-action btn-editar">Editar</a>
-                    
-                    <form action="{{ url_for('edicion1.eliminar_pedido', id=u.id) }}" method="POST" style="margin: 0;" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este pedido?');">
+                    <a href="{{ url_for('edicion1.editar_pedido', id=u[0]) }}" class="btn-action btn-editar">Editar</a>
+
+                    <form action="{{ url_for('edicion1.eliminar_pedido', id=u[0]) }}" method="POST" style="margin: 0;" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este pedido?');">
                         <button type="submit" class="btn-action btn-eliminar">Eliminar</button>
                     </form>
                 </div>

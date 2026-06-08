@@ -18,8 +18,8 @@ def pedidos():
         conn.commit()
         conn.close()
         return redirect(url_for('shop.pedidos'))
-
-
-
-
-    return render_template('pedidos.html')
+    
+    conn = get_connection()
+    usuarios = conn.execute('SELECT id, nombre, apellido, email, opcion FROM usuarios').fetchall()
+    conn.close()
+    return render_template('pedidos.html', usuarios=usuarios)
