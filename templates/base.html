@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Restaurante{% endblock %}</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/image.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
@@ -14,7 +15,7 @@
         <img src="{{ url_for('static', filename='images/Logo.png') }}" 
              alt="Logo del restaurante" 
              style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;">
-        <h1>Restaurante Díaz</h1>
+        <h1 class="texto-animado">Restaurante Díaz</h1>
     </header>
 
     <nav class="nav">
