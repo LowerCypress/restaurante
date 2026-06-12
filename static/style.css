@@ -29,34 +29,32 @@ nav {
         background-color: #7f7f6f;
         padding: 8px 0;
     }
-
+nav a.active,
 nav a {
-        color: white;
-        text-decoration: none;
-        padding: 7px 13px;
-        border-radius: 8px;
-        background-color: #8f8f85;
-        transition: background-color 0.2s ease;
-     }
-
-nav a:hover,
-nav a.active {
-        background-color: #5c5c52;
-    }
-
+    color: white;
+    text-decoration: none;
+    padding: 7px 13px;
+    border-radius: 8px;
+    background-color: #70705d;
+    transition: background-color 0.8s ease, color 0.5s ease;
+}
+nav a:hover {
+    background-color: rgb(230, 185, 185); 
+    color: #70705d;       
+}     
 main {
         padding: 20px;
     }
 
 div.full-width {
-        font-family: Arial, sans-serif; /* Tenías font-style, lo correcto para la fuente es font-family */
-        max-width: 1200px;             /* Le da un límite sano al ancho en pantallas grandes */
-        margin: 20px auto;             /* Lo centra perfectamente en la pantalla */
+        font-family: Arial, sans-serif;
+        max-width: 1200px;          
+        margin: 20px auto;             
         background-color: #e0e0d1;
         padding: 20px;
         border-radius: 8px;
         box-sizing: border-box;
-        text-align: center;             /* Centra el texto dentro del div */
+        text-align: center;            
     }
 div.full-width img {
     max-width: 100%;
@@ -68,7 +66,7 @@ img {
    max-width: 100%;
    height: auto;
    display: block;
-   margin: 0 auto; /* Asegura el centrado de las imágenes del catálogo */
+   margin: 0 auto;
 }
 
 div.card-body {
